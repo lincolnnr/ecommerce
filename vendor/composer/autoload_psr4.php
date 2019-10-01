@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    '' => array($vendorDir . '/itturini/php-classes/src'),
+    'SON\\' => array($vendorDir . '/itt/php-classes/src'),
 );

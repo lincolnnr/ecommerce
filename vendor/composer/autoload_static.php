@@ -6,8 +6,18 @@ namespace Composer\Autoload;
 
 class ComposerStaticInita5063fe7aadc9a38d5a11174e0d6dd6e
 {
-    public static $fallbackDirsPsr4 = array (
-        0 => __DIR__ . '/..' . '/itturini/php-classes/src',
+    public static $prefixLengthsPsr4 = array (
+        'S' => 
+        array (
+            'SON\\' => 4,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'SON\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/itt/php-classes/src',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -41,7 +51,8 @@ class ComposerStaticInita5063fe7aadc9a38d5a11174e0d6dd6e
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->fallbackDirsPsr4 = ComposerStaticInita5063fe7aadc9a38d5a11174e0d6dd6e::$fallbackDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInita5063fe7aadc9a38d5a11174e0d6dd6e::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInita5063fe7aadc9a38d5a11174e0d6dd6e::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInita5063fe7aadc9a38d5a11174e0d6dd6e::$prefixesPsr0;
             $loader->classMap = ComposerStaticInita5063fe7aadc9a38d5a11174e0d6dd6e::$classMap;
 
