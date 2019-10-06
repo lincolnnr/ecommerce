@@ -5,6 +5,14 @@ namespace SON;
 class Model{
     private $values = [];
 
+    public function setData($data){
+
+        foreach ($data as $key => $value)
+        {
+			$this->{"set".$key}($value);
+		}
+
+	}
     public function __call($name, $args){
         
         $method = substr($name, 0, 3);
@@ -13,19 +21,12 @@ class Model{
         switch ($method)
         {
             case "get":
-                 return $this->value[$fieldName];
+                 return $this->values[$fieldName];
             break;
  
             case "set":
-             $this->value[$fieldName] = $args[0]; 
+             $this->values[$fieldName] = $args[0];
             break;
-        }
-    }
-
-    public function setData($data = array())
-    {
-        foreach($data as $key => $value){
-            $this->{"set".$key}($value);
         }
     }
 
