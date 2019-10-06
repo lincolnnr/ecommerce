@@ -9,6 +9,10 @@ class User extends Model{
     
     const SESSION = "User";
 
+	protected $fields = [
+		"iduser", "idperson", "deslogin", "despassword", "inadmin", "dtergister"
+	];
+
     public static function login($login, $password){
         $sql = new Sql();
         $results = $sql->select("SELECT * FROM tb_users WHERE deslogin = :LOGIN", array(
@@ -16,21 +20,22 @@ class User extends Model{
         ));
 
         if(count($results) === 0){
-            throw new \Exception("Usuário inexistente ou senha inválida", 1);
+            throw new \Exception("Não foi possível fazer login.");
+
         }
         $data = $results[0];
 
-        if(password_verify($password, $data['despassword']) === true){
+        if(password_verify($password, $data["despassword"])) {
             
             $user = new User();
-
-            $user->setiduser($data["iduser"]);
+			$user->setData($data);
 
             $_SESSION[User::SESSION] = $user->getValues();
+            
             return $user;
 
         }else{
-            throw new \Exception("Usuário inexistente ou senha inválida", 1);
+			throw new \Exception("Não foi possível fazer login.");
         }
     }
 
@@ -47,13 +52,14 @@ class User extends Model{
 		if (
 			!isset($_SESSION[User::SESSION])
 			|| 
-			!$_SESSION[User::SESSION]
-			||
+            !$_SESSION[User::SESSION]
+            ||
 			!(int)$_SESSION[User::SESSION]["iduser"] > 0
 			||
-			(bool)$_SESSION[User::SESSION]["iduser"] !== $inadmin
+            (bool)$_SESSION[User::SESSION]["iduser"] !== $inadmin
+			
 		) {
-			header("Location: /admin/login");
+            header("Location: /admin/login");
 			exit;
 		}
 	}
