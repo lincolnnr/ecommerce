@@ -5,7 +5,9 @@
       Anything you want
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2019 <a href="#">iTTurini</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2019 <a href="https://itturini.com.br" class="text-black">iTTurini Store</a></strong><br>
+      All rights reserved
+  
   </footer>
 
   <!-- Control Sidebar -->

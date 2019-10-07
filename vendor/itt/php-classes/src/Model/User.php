@@ -6,14 +6,15 @@ use \SON\Model;
 use \SON\DB\Sql;
 
 class User extends Model{
-    
+
     const SESSION = "User";
 
-	protected $fields = [
-		"iduser", "idperson", "deslogin", "despassword", "inadmin", "dtergister"
-	];
-
-    public static function login($login, $password){
+	// protected $fields = [
+	// 	"iduser", "idperson", "deslogin", "despassword", "inadmin", "dtergister"
+    // ];
+    
+    public static function login($login, $password):User
+    {
         $sql = new Sql();
         $results = $sql->select("SELECT * FROM tb_users WHERE deslogin = :LOGIN", array(
             ":LOGIN"=>$login
@@ -23,6 +24,7 @@ class User extends Model{
             throw new \Exception("Não foi possível fazer login.");
 
         }
+
         $data = $results[0];
 
         if(password_verify($password, $data["despassword"])) {
@@ -38,13 +40,6 @@ class User extends Model{
 			throw new \Exception("Não foi possível fazer login.");
         }
     }
-
-    public static function logout()
-	{
-
-		$_SESSION[User::SESSION] = NULL;
-
-	}
 
 	public static function verifyLogin($inadmin = true)
 	{
@@ -62,5 +57,74 @@ class User extends Model{
             header("Location: /admin/login");
 			exit;
 		}
-	}
+    }
+
+    public static function logout()
+	{
+		$_SESSION[User::SESSION] = NULL;
+    }
+    
+    public static function listAll()
+	{
+        $sql = new Sql();
+
+        return $sql->select("SELECT * FROM tb_users a INNER JOIN tb_persons b USING(idperson) ORDER BY b.desperson");
+    }
+
+    public function save()
+    {
+        $sql = new Sql();
+
+        $results = $sql->select("CALL sp_users_save(:desperson, :deslogin, :nrphone, :desemail, :despassword, :inadmin)", 
+        array(
+            ":desperson"=>$this->getdesperson(),
+            ":deslogin"=>$this->getdeslogin(),
+            ":nrphone"=>$this->getnrphone(),
+            ":desemail"=>$this->getdesemail(),
+            ":despassword"=>$this->getdespassword(),
+            ":inadmin"=>$this->getinadmin()
+        ));
+        $this->setData($results[0]);
+
+        var_dump($results[0]);
+    }
+
+    public function get($iduser)
+    {
+        $sql = new Sql();
+
+        $results = $sql->select("SELECT * FROM tb_users a INNER JOIN tb_persons b USING(idperson) WHERE a.iduser = :iduser", array(
+            ":iduser"=>$iduser
+        ));
+         
+        $this->setData($results[0]);
+    }
+
+    public function update()
+    {
+        $sql = new Sql();
+
+        $results = $sql->select("CALL sp_usersupdate_save(:iduser,:desperson, :deslogin, :nrphone, :desemail, :despassword, :inadmin)", 
+        array(
+            ":iduser"=>$this->getiduser(),
+            ":desperson"=>$this->getdesperson(),
+            ":deslogin"=>$this->getdeslogin(),
+            ":nrphone"=>$this->getnrphone(),
+            ":desemail"=>$this->getdesemail(),
+            ":despassword"=>$this->getdespassword(),
+            ":inadmin"=>$this->getinadmin()
+        ));
+        var_dump($results[0]);
+        $this->setData($results[0]);
+    }
+
+    public function delete()
+    {
+        $sql = new Sql();
+
+        $sql->query("CALL sp_users_delete(:iduser)", array(
+            "iduser"=>$this->getiduser()
+        ));
+    }
+
 }
