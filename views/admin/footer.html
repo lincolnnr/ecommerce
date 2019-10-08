@@ -2,7 +2,7 @@
 <footer class="main-footer">
     <!-- To the right -->
     <div class="pull-right hidden-xs">
-      Anything you want
+      Conexões que transformam 
     </div>
     <!-- Default to the left -->
     <strong>Copyright &copy; 2019 <a href="https://itturini.com.br" class="text-black">iTTurini Store</a></strong><br>
