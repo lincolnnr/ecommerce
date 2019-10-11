@@ -4,10 +4,10 @@ namespace SON\DB;
 
 class Sql {
 
-	const HOSTNAME = "localhost";
-	const USERNAME = "itloja";
+	const HOSTNAME = "127.0.0.1";
+	const USERNAME = "root";
 	const PASSWORD = "Uni@4611";
-	const DBNAME = "itloja";
+	const DBNAME = "db_ecommerce";
 
 	private $conn;
 

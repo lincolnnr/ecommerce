@@ -47,7 +47,7 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Faça login para iniciar sua sessão</p>
+    <p class="login-box-msg">Painel de Controle</p>
 
     <form action="/admin/login" method="post">
       <div class="form-group has-feedback">
@@ -59,16 +59,16 @@
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
-        <div class="col-xs-8">
+        <!-- <div class="col-xs-8">
           <div class="checkbox icheck">
             <label>
               <input type="checkbox"> Manter logado
             </label>
           </div>
-        </div>
+        </div> -->
         <!-- /.col -->
-        <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">ENTRAR</button>
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-primary btn-block">ENTRAR</button>
         </div>
         <!-- /.col -->
       </div>
