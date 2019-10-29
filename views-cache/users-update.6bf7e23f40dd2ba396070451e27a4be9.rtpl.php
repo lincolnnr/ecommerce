@@ -36,10 +36,14 @@
               <label for="desemail">E-mail</label>
               <input type="email" class="form-control" id="desemail" name="desemail" placeholder="Digite o e-mail" value="<?php echo htmlspecialchars( $user["desemail"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
             </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" name="inadmin" value="1" <?php if( $user["inadmin"] == 1 ){ ?>checked<?php } ?>> Acesso de Administrador
-              </label>
+            <div class="form-group">
+              <label for="inadmin">Perfil</label>
+              <select name="inadmin" class="form-control" id="inadmin">
+                <option value="1" <?php if( $user["inadmin"] == 1 ){ ?>selected<?php } ?>>Administrador</option>
+                <option value="2" <?php if( $user["inadmin"] == 2 ){ ?>selected<?php } ?>>Comparar</option>
+                <option value="3" <?php if( $user["inadmin"] == 3 ){ ?>selected<?php } ?>>Agência</option>
+                <option value="4" <?php if( $user["inadmin"] == 4 ){ ?>selected<?php } ?>>Representante</option>
+              </select>
             </div>
           </div>
           <!-- /.box-body -->

@@ -45,10 +45,14 @@
               <label for="despassword">Senha</label>
               <input type="password" class="form-control" id="despassword" name="despassword" placeholder="Digite a senha">
             </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" name="inadmin" value="1"> Acesso de Administrador
-              </label>
+            <div class="form-group">
+              <label for="inadmin">Perfil</label>
+              <select name="inadmin" class="form-control" id="inadmin">
+                <option value="1">Administrador</option>
+                <option value="2">Comparar</option>
+                <option value="3">Agência</option>
+                <option value="4">Representante</option>
+              </select>
             </div>
           </div>
           <!-- /.box-body -->

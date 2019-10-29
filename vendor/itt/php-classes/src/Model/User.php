@@ -85,10 +85,11 @@ class User extends Model{
             ":deslogin"=>$this->getdeslogin(),
             ":nrphone"=>$this->getnrphone(),
             ":desemail"=>$this->getdesemail(),
-            ":despassword"=>password_hash($this->getdespassword(), PASSWORD_DEFAULT, [
-                "cost"=>12
-            ]),
-            ":inadmin"=>$this->getinadmin()
+            ":inadmin"=>$this->getinadmin(),
+            ":despassword"=>$this->getdespassword()
+            // ":despassword"=>password_hash($this->getdespassword(), PASSWORD_DEFAULT, [
+            //     "cost"=>12
+            // ])
         ));
         $this->setData($results[0]);
 
@@ -186,9 +187,12 @@ class User extends Model{
     public static function validForgotDecrypt($cod)
     {
         $code = base64_decode($code);
-		$idrecovery = openssl_decrypt($code, 'AES-128-CBC', pack("a16", User::SECRET), 0, pack("a16", User::SECRET_IV));
+
+        $idrecovery = openssl_decrypt($code, 'AES-128-CBC', pack("a16", User::SECRET), 0, pack("a16", User::SECRET_IV));
+        
 		$sql = new Sql(); 
-		$results = $sql->select("
+        
+        $results = $sql->select("
 			SELECT *
 			FROM tb_userspasswordsrecoveries a
 			INNER JOIN tb_users b USING(iduser)

@@ -41,7 +41,7 @@
                     <td><?php echo htmlspecialchars( $value1["desperson"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                     <td><?php echo htmlspecialchars( $value1["desemail"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                     <td><?php echo htmlspecialchars( $value1["deslogin"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td/>
-                    <td><?php if( $value1["inadmin"] == 1 ){ ?>Sim<?php }else{ ?>Não<?php } ?></td>
+                    <td><?php if( $value1["inadmin"] == 1 ){ ?>Administrador<?php }elseif( $value1["inadmin"] == 2 ){ ?>Comparar<?php }elseif( $value1["inadmin"] == 3 ){ ?>Agência<?php }elseif( $value1["inadmin"] == 4 ){ ?>Representante<?php }elseif( $value1["inadmin"] == 5 ){ ?>Vendedor<?php }else{ ?>Cliente<?php } ?></td>
                     <td>
                       <a href="/admin/users/<?php echo htmlspecialchars( $value1["iduser"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
                       <a href="/admin/users/<?php echo htmlspecialchars( $value1["iduser"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/delete" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>

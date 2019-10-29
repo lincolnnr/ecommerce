@@ -2,7 +2,7 @@
 
 namespace SON;
 
-require __DIR__ .'./../vendor/autoload.php';
+require __DIR__ . './../../../../vendor/autoload.php';
 
 use Rain\Tpl;
 

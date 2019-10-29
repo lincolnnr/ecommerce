@@ -36,10 +36,14 @@
               <label for="desemail">E-mail</label>
               <input type="email" class="form-control" id="desemail" name="desemail" placeholder="Digite o e-mail" value="{$user.desemail}">
             </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" name="inadmin" value="1" {if="$user.inadmin == 1"}checked{/if}> Acesso de Administrador
-              </label>
+            <div class="form-group">
+              <label for="inadmin">Perfil</label>
+              <select name="inadmin" class="form-control" id="inadmin">
+                <option value="1" {if="$user.inadmin == 1"}selected{/if}>Administrador</option>
+                <option value="2" {if="$user.inadmin == 2"}selected{/if}>Comparar</option>
+                <option value="3" {if="$user.inadmin == 3"}selected{/if}>Agência</option>
+                <option value="4" {if="$user.inadmin == 4"}selected{/if}>Representante</option>
+              </select>
             </div>
           </div>
           <!-- /.box-body -->

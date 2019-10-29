@@ -116,7 +116,7 @@ $app->post("/admin/users/create", function () {
 
 	$user = new User();
 
-	$_POST["inadmin"] = (isset($_POST["inadmin"]))?1:0;
+	// $_POST["inadmin"] = (isset($_POST["inadmin"]))?1:0;
 
 	// $_POST['despassword'] = password_hash($_POST["despassword"], PASSWORD_DEFAULT, [
 	// 	"cost"=>12
@@ -137,7 +137,7 @@ $app->post('/admin/users/:iduser', function($iduser) {
 
 	$user = new User();
 
-	$_POST["inadmin"] = (isset($_POST[inadmin]))?1:0;
+	// $_POST["inadmin"] = (isset($_POST[inadmin]))?1:0;
 
 	$user->get((int)$iduser);
 
@@ -166,9 +166,9 @@ $app->post('/admin/forgot', function(){
 	
 	var_dump($user);
 
-	// header("Location: /admin/forgot/sent");
+	header("Location: /admin/forgot/sent");
 
-	// exit;
+	 exit;
 });
 
 $app->get('/admin/forgot/sent', function(){
